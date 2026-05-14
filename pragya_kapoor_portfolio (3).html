@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pragya Kapoor — SEO & Digital Marketing Specialist</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:#FDF8F6;color:#1E1218}
+
+:root{
+  --bg:#FDF8F6;
+  --white:#FFFFFF;
+  --blush:#FDF0F3;
+  --blush2:#FAE6EB;
+  --rose:#C4607A;
+  --rose2:#A84D65;
+  --rose3:#8C3A52;
+  --rose-light:#F2C4CF;
+  --rose-pale:#FEF5F7;
+  --ink:#1E1218;
+  --ink2:#3D2830;
+  --mid:#9A8088;
+  --border:rgba(196,96,122,0.12);
+  --border2:rgba(196,96,122,0.07);
+  --gold:#B8791A;
+  --sh:0 2px 8px rgba(196,96,122,0.05),0 12px 32px rgba(196,96,122,0.07);
+  --shL:0 4px 16px rgba(196,96,122,0.08),0 24px 60px rgba(196,96,122,0.12);
+}
+
+/* ── CURSOR ── */
+.cur{position:fixed;width:14px;height:14px;background:var(--rose);border-radius:50%;pointer-events:none;z-index:9999;left:0;top:0;transform:translate(-50%,-50%);transition:width .25s,height .25s,background .25s;mix-blend-mode:multiply}
+.curR{position:fixed;width:48px;height:48px;border:1.5px solid var(--rose);border-radius:50%;pointer-events:none;z-index:9998;left:0;top:0;transform:translate(-50%,-50%);opacity:0.28;transition:width .32s,height .32s,opacity .3s}
+
+/* ── LAYOUT ── */
+.root{display:grid;grid-template-columns:256px 1fr;height:100vh;overflow:hidden}
+
+/* ═══════════ SIDEBAR ═══════════ */
+.side{
+  background:var(--white);
+  border-right:1px solid var(--border);
+  display:flex;flex-direction:column;
+  padding:2.25rem 1.75rem;
+  height:100vh;overflow:hidden;
+  position:relative;
+}
+/* decorative circles */
+.side::before{content:'';position:absolute;bottom:-60px;right:-60px;width:200px;height:200px;border-radius:50%;background:var(--blush2);opacity:0.5;pointer-events:none}
+.side::after{content:'';position:absolute;top:60px;right:-80px;width:140px;height:140px;border-radius:50%;background:var(--blush);opacity:0.4;pointer-events:none}
+
+.side-inner{position:relative;z-index:1;display:flex;flex-direction:column;height:100%}
+
+.brand{margin-bottom:2.5rem}
+.brand-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.55rem;font-weight:700;
+  color:var(--ink);line-height:1.1;
+  letter-spacing:-0.01em;margin-bottom:0.25rem;
+}
+.brand-role{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;font-weight:700;color:var(--rose)}
+
+.snav{list-style:none;flex:1}
+.snav li+li{margin-top:3px}
+.snav a{
+  display:flex;align-items:center;gap:0.65rem;
+  padding:0.58rem 0.85rem;border-radius:10px;
+  font-size:0.79rem;font-weight:600;
+  color:var(--mid);text-decoration:none;
+  transition:all 0.24s cubic-bezier(.23,1,.32,1);
+  position:relative;overflow:hidden;
+}
+.snav a .nicon{font-size:1rem;flex-shrink:0;transition:transform .3s}
+.snav a::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--rose);border-radius:0 2px 2px 0;transform:scaleY(0);transition:transform .24s cubic-bezier(.23,1,.32,1)}
+.snav a:hover{background:var(--blush);color:var(--ink)}
+.snav a:hover .nicon{transform:scale(1.15)}
+.snav a.active{background:var(--blush2);color:var(--rose2)}
+.snav a.active::before{transform:scaleY(1)}
+
+.side-avail{
+  display:flex;align-items:center;gap:0.55rem;
+  padding:0.72rem 0.85rem;
+  background:linear-gradient(135deg,rgba(196,96,122,0.08),rgba(196,96,122,0.04));
+  border:1px solid rgba(196,96,122,0.15);
+  border-radius:10px;margin-top:auto;margin-bottom:1.25rem;
+}
+.avdot{width:8px;height:8px;border-radius:50%;background:#22C55E;box-shadow:0 0 0 3px rgba(34,197,94,0.2);animation:pulse 2.2s ease infinite;flex-shrink:0}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 3px rgba(34,197,94,0.2)}50%{box-shadow:0 0 0 7px rgba(34,197,94,0.05)}}
+.avtext{font-size:0.69rem;font-weight:600;color:var(--rose2)}
+
+.side-links{border-top:1px solid var(--border);padding-top:1.1rem}
+.side-links a{display:flex;align-items:center;gap:0.45rem;font-size:0.67rem;color:var(--mid);text-decoration:none;margin-bottom:0.32rem;transition:color .2s;font-weight:500}
+.side-links a:hover{color:var(--rose)}
+.side-links a .lico{font-size:0.85rem}
+
+/* ═══════════ CONTENT ═══════════ */
+.content{height:100vh;overflow-y:auto;background:var(--bg);scroll-behavior:smooth}
+.content::-webkit-scrollbar{width:4px}
+.content::-webkit-scrollbar-thumb{background:var(--rose-light);border-radius:10px}
+
+/* ── PAGES ── */
+.page{display:none;min-height:100vh}
+.page.active{display:block;animation:pgIn .52s cubic-bezier(.23,1,.32,1) both}
+.page.out{animation:pgOut .28s cubic-bezier(.23,1,.32,1) both}
+@keyframes pgIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pgOut{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(-12px)}}
+
+/* ── HERO BAND ── */
+.ph{background:var(--white);padding:3.5rem 4rem 3rem;border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+.ph-orb{position:absolute;border-radius:50%;pointer-events:none}
+.ph-orb.a{width:420px;height:420px;background:radial-gradient(circle,rgba(196,96,122,0.07) 0%,transparent 70%);top:-100px;right:-60px;animation:orbDrift 10s ease-in-out infinite}
+.ph-orb.b{width:250px;height:250px;background:radial-gradient(circle,rgba(196,96,122,0.05) 0%,transparent 70%);bottom:-80px;left:20%;animation:orbDrift 14s ease-in-out infinite reverse}
+.ph-orb.c{width:120px;height:120px;background:radial-gradient(circle,rgba(250,230,235,0.8) 0%,transparent 70%);top:30%;right:18%;animation:orbDrift 8s ease-in-out infinite 2s}
+@keyframes orbDrift{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(10px,-14px) scale(1.05)}}
+.ph-lines{position:absolute;inset:0;background-image:linear-gradient(rgba(196,96,122,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(196,96,122,0.025) 1px,transparent 1px);background-size:50px 50px;pointer-events:none}
+
+.ey{display:flex;align-items:center;gap:0.6rem;font-size:0.61rem;letter-spacing:0.26em;text-transform:uppercase;font-weight:700;color:var(--rose);margin-bottom:0.65rem}
+.ey::before{content:'';width:14px;height:2px;background:var(--rose);border-radius:2px;flex-shrink:0}
+.pt{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4.5vw,3.4rem);font-weight:700;line-height:1.1;letter-spacing:-0.02em;color:var(--ink);margin-bottom:1rem}
+.pt em{font-style:italic;color:var(--rose)}
+.psub{font-size:0.96rem;line-height:1.82;color:var(--mid);max-width:520px}
+.pb{padding:3rem 4rem}
+
+/* ── REVEAL ── */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .65s cubic-bezier(.23,1,.32,1),transform .65s cubic-bezier(.23,1,.32,1)}
+.rv.fr{transform:translateX(-22px)}.rv.rr{transform:translateX(22px)}.rv.sc{transform:scale(0.95)}
+.rv.in{opacity:1;transform:none}
+
+/* ═══════════ HOME ═══════════ */
+.home-hero{background:var(--white);padding:5rem 4rem 4rem;border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+.htag{display:inline-flex;align-items:center;gap:0.6rem;font-size:0.63rem;letter-spacing:0.22em;text-transform:uppercase;font-weight:700;color:var(--rose);margin-bottom:2rem;opacity:0;animation:sUp .7s ease forwards .1s}
+.htag::before{content:'✦';font-size:0.55rem}
+@keyframes sUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.hhl{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,6.5vw,5rem);font-weight:700;line-height:1.04;letter-spacing:-0.03em;color:var(--ink);margin-bottom:1.4rem}
+.hhl .ln{display:block;overflow:hidden}
+.hhl .ln span{display:block;opacity:0;transform:translateY(110%);animation:lnUp .8s cubic-bezier(.16,1,.3,1) forwards}
+.hhl .ln:nth-child(1) span{animation-delay:.18s}
+.hhl .ln:nth-child(2) span{animation-delay:.32s}
+.hhl .ln:nth-child(3) span{animation-delay:.46s}
+.hhl em{font-style:italic;color:var(--rose)}
+@keyframes lnUp{to{opacity:1;transform:translateY(0)}}
+.hp{font-size:1rem;line-height:1.82;color:var(--mid);max-width:500px;margin-bottom:2rem;opacity:0;animation:sUp .8s ease forwards .72s}
+.chips{display:flex;flex-wrap:wrap;gap:0.42rem;margin-bottom:3rem;opacity:0;animation:sUp .8s ease forwards .88s}
+.chip{font-size:0.61rem;letter-spacing:0.07em;text-transform:uppercase;font-weight:700;padding:0.3rem 0.78rem;border-radius:100px;border:1.5px solid rgba(196,96,122,0.22);color:var(--rose2);background:var(--blush);transition:all .22s;cursor:default}
+.chip:hover{background:var(--rose);color:#fff;border-color:var(--rose);transform:translateY(-1px)}
+.hstats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--border);padding-top:2.5rem;opacity:0;animation:sUp .8s ease forwards 1.05s}
+.hs{padding-right:2rem;border-right:1px solid var(--border)}.hs+.hs{padding-left:2rem}.hs:last-child{border-right:none}
+.hsv{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:700;color:var(--rose);display:block;line-height:1;margin-bottom:0.22rem;letter-spacing:-0.025em}
+.hsl{font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid);font-weight:600}
+
+/* TICKER */
+.ticker{background:linear-gradient(90deg,var(--rose2),var(--rose),var(--rose2));padding:0.72rem 0;overflow:hidden;white-space:nowrap}
+.tt{display:inline-flex;animation:tickMove 26s linear infinite}
+.tt:hover{animation-play-state:paused}
+.ti{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;font-weight:700;color:rgba(255,255,255,0.7);padding:0 1.75rem;transition:color .2s}.ti:hover{color:#fff}
+.ts{color:rgba(255,255,255,0.25)}
+@keyframes tickMove{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* FEAT CARDS */
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2.5rem}
+.fcard{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.6rem;box-shadow:var(--sh);cursor:pointer;transition:all .32s cubic-bezier(.23,1,.32,1);text-decoration:none;color:inherit;display:block;position:relative;overflow:hidden}
+.fcard-glow{position:absolute;inset:0;background:linear-gradient(135deg,rgba(196,96,122,0.04),transparent 55%);opacity:0;transition:opacity .3s}
+.fcard:hover .fcard-glow{opacity:1}
+.fcard:hover{transform:translateY(-5px);box-shadow:var(--shL);border-color:rgba(196,96,122,0.22)}
+.fcard-ico{font-size:1.8rem;margin-bottom:1rem;display:block}
+.fcard-tag{font-size:0.57rem;letter-spacing:0.18em;text-transform:uppercase;font-weight:700;color:var(--rose);margin-bottom:0.45rem}
+.fcard-title{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:700;color:var(--ink);margin-bottom:0.38rem;line-height:1.28;letter-spacing:-0.01em}
+.fcard-sub{font-size:0.74rem;color:var(--mid);line-height:1.55}
+.fcard-arr{position:absolute;top:1.4rem;right:1.4rem;font-size:0.85rem;color:var(--rose-light);transition:transform .22s,color .22s}
+.fcard:hover .fcard-arr{transform:translate(3px,-3px);color:var(--rose)}
+
+/* ═══════════ ABOUT ═══════════ */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:start}
+.at{font-size:0.95rem;line-height:1.88;color:var(--ink2)}.at p+p{margin-top:1rem}.at strong{color:var(--ink);font-weight:700}
+.kstack{display:flex;flex-direction:column;gap:0.8rem}
+.kcard{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.1rem 1.35rem;display:flex;align-items:center;gap:1rem;box-shadow:var(--sh);transition:all .32s cubic-bezier(.23,1,.32,1);cursor:default}
+.kcard:hover{transform:translateX(6px);border-color:rgba(196,96,122,0.28);box-shadow:var(--shL)}
+.kv{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:700;color:var(--rose);min-width:75px;flex-shrink:0;line-height:1}
+.kl{font-size:0.8rem;color:var(--ink2);line-height:1.4}.kl strong{display:block;color:var(--ink);font-weight:700;margin-bottom:0.04rem}
+.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.ecard{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:1.4rem 1.5rem;box-shadow:var(--sh);transition:all .32s cubic-bezier(.23,1,.32,1)}
+.ecard:hover{transform:translateY(-4px);box-shadow:var(--shL);border-color:rgba(196,96,122,0.22)}
+.ed{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:0.2rem;letter-spacing:-0.01em}
+.esc{font-size:0.7rem;font-weight:700;color:var(--rose);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.35rem}
+.edt{font-size:0.68rem;color:var(--mid);margin-bottom:0.45rem}
+.em_{font-size:0.77rem;color:var(--ink2);line-height:1.6}
+.agrd{display:grid;grid-template-columns:repeat(3,1fr);gap:1.05rem}
+.acard{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:1.65rem;box-shadow:var(--sh);transition:all .32s cubic-bezier(.23,1,.32,1);cursor:default}
+.acard:hover{transform:translateY(-5px);box-shadow:var(--shL);border-color:rgba(196,96,122,0.22)}
+.aico{font-size:1.7rem;margin-bottom:0.9rem;display:block}
+.aname{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:0.22rem;line-height:1.28;letter-spacing:-0.01em}
+.aorg{font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--rose);font-weight:700;margin-bottom:0.62rem}
+.adesc{font-size:0.79rem;line-height:1.7;color:var(--ink2)}
+
+/* ═══════════ WORK ═══════════ */
+.wcard{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:2.1rem 2.4rem;box-shadow:var(--sh);position:relative;overflow:hidden;margin-bottom:1.25rem;transition:all .35s cubic-bezier(.23,1,.32,1);cursor:default}
+.wbar{position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--rose),var(--rose-light),var(--rose));transform:scaleX(0);transform-origin:left;transition:transform .45s cubic-bezier(.23,1,.32,1)}
+.wcard:hover .wbar{transform:scaleX(1)}
+.wcard:hover{transform:translateY(-4px);box-shadow:var(--shL);border-color:rgba(196,96,122,0.2)}
+.wtop{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:.7rem;margin-bottom:.9rem}
+.tags{display:flex;gap:.38rem;flex-wrap:wrap}
+.tag{font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:700;color:var(--rose2);background:var(--blush);border:1px solid rgba(196,96,122,0.18);padding:.26rem .68rem;border-radius:100px;white-space:nowrap}
+.wdate{font-size:0.7rem;color:var(--mid);font-weight:600;white-space:nowrap}
+.wtitle{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:700;color:var(--ink);margin-bottom:.2rem;line-height:1.25;letter-spacing:-0.015em}
+.wco{font-size:0.7rem;color:var(--mid);font-weight:600;text-transform:uppercase;letter-spacing:.07em;margin-bottom:.9rem}
+.wb{font-size:0.87rem;line-height:1.82;color:var(--ink2);margin-bottom:1.2rem}
+.wm{display:flex;gap:2rem;flex-wrap:wrap;padding-top:1rem;border-top:1px solid var(--border2)}
+.wmv{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:700;color:var(--rose);line-height:1;display:block}
+.wml{font-size:0.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mid);margin-top:.2rem;font-weight:600}
+
+/* ═══════════ AUDITS ═══════════ */
+.ah{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem;padding-bottom:1.25rem;border-bottom:2px solid var(--ink);margin-bottom:1.75rem}
+.an{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:700;letter-spacing:-0.01em;margin-bottom:.18rem}
+.asb{font-size:.72rem;color:var(--mid);font-weight:500}
+.abadge{font-size:.59rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700;padding:.3rem .9rem;border-radius:100px;background:var(--rose);color:#fff;white-space:nowrap;flex-shrink:0}
+.abadge.tl{background:#0D6E6E}
+.ig{display:grid;grid-template-columns:repeat(3,1fr);gap:.85rem;margin-bottom:.85rem}
+.ic{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.2rem;box-shadow:var(--sh);transition:all .25s ease}
+.ic:hover{border-color:rgba(196,96,122,.3);transform:translateY(-2px);box-shadow:var(--shL)}
+.in_{font-size:.58rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem}
+.it{font-size:.82rem;font-weight:700;color:var(--ink);margin-bottom:.38rem;line-height:1.3}
+.ib_{font-size:.75rem;line-height:1.7;color:var(--ink2)}
+.asr{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border-radius:10px;overflow:hidden;margin-bottom:1.5rem}
+.sc_{background:var(--white);padding:1.1rem 1.2rem}
+.sl{font-size:.6rem;font-weight:700;color:var(--rose);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.3rem}
+.sv{font-size:.75rem;color:var(--ink2);line-height:1.5}
+.prg{display:grid;grid-template-columns:repeat(3,1fr);gap:.85rem}
+.prc{background:var(--white);border:1px solid var(--border);border-top:3px solid var(--rose);border-radius:10px;padding:1.35rem;box-shadow:var(--sh);transition:all .28s ease}
+.prc:hover{transform:translateY(-3px);box-shadow:var(--shL)}
+.prn{font-size:.57rem;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--rose);margin-bottom:.48rem}
+.prt{font-family:'Cormorant Garamond',serif;font-size:.95rem;font-weight:700;line-height:1.28;margin-bottom:.62rem;color:var(--ink);letter-spacing:-0.01em}
+.prb{font-size:.76rem;line-height:1.68;color:var(--ink2)}
+
+/* ═══════════ SKILLS ═══════════ */
+.srows{display:flex;flex-direction:column;gap:1.05rem}
+.srow{display:grid;grid-template-columns:155px 1fr;gap:1.4rem;align-items:start;padding-bottom:1.05rem;border-bottom:1px solid var(--border2)}
+.srow:last-child{border-bottom:none;padding-bottom:0}
+.scat{font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);padding-top:.18rem}
+.sis_{display:flex;flex-wrap:wrap;gap:.38rem}
+.si{font-size:.75rem;color:var(--ink2);background:var(--white);border:1px solid var(--border);border-radius:7px;padding:.3rem .75rem;font-weight:500;cursor:default;transition:all .18s ease;box-shadow:var(--sh)}
+.si:hover{background:var(--rose);color:#fff;border-color:var(--rose);transform:translateY(-1px);box-shadow:var(--shL)}
+.twr{display:flex;flex-wrap:wrap;gap:.52rem;margin-top:1.4rem}
+.tb{font-size:.73rem;font-weight:600;color:var(--ink2);background:var(--white);border:1px solid var(--border);border-radius:8px;padding:.42rem .95rem;box-shadow:var(--sh);transition:all .2s ease;cursor:default}
+.tb:hover{background:var(--rose);color:#fff;border-color:var(--rose);transform:translateY(-2px);box-shadow:var(--shL)}
+.cgrd{display:grid;grid-template-columns:repeat(2,1fr);gap:.65rem}
+.crt{display:flex;align-items:center;gap:.65rem;padding:.78rem .95rem;background:var(--white);border:1px solid var(--border);border-radius:9px;font-size:.79rem;color:var(--ink2);font-weight:500;box-shadow:var(--sh);transition:all .2s}
+.crt:hover{border-color:rgba(196,96,122,.3);transform:translateX(3px)}
+.cdot{width:7px;height:7px;border-radius:50%;background:var(--rose);flex-shrink:0}
+
+/* ═══════════ CONTACT ═══════════ */
+.cgrd2{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:start}
+.ccard{background:var(--white);border:1px solid var(--border);border-radius:13px;padding:1.75rem;box-shadow:var(--sh);margin-bottom:.9rem;transition:all .32s cubic-bezier(.23,1,.32,1);cursor:default}
+.ccard:hover{transform:translateY(-3px);box-shadow:var(--shL);border-color:rgba(196,96,122,.22)}
+.cclbl{font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--rose);margin-bottom:.45rem}
+.ccval{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:700;color:var(--ink);word-break:break-all}
+.ccval a{color:var(--rose2);text-decoration:none;transition:color .2s}.ccval a:hover{color:var(--rose)}
+.avb_{display:inline-flex;align-items:center;gap:.5rem;background:rgba(196,96,122,.07);border:1px solid rgba(196,96,122,.18);border-radius:100px;padding:.4rem 1rem;font-size:.7rem;font-weight:700;color:var(--rose2);letter-spacing:.05em;margin-bottom:1.5rem}
+.avdot2{width:7px;height:7px;border-radius:50%;background:#22C55E;animation:pulse 2s ease infinite;flex-shrink:0}
+.cform{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:2rem;box-shadow:var(--sh)}
+.cft{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:var(--ink);margin-bottom:1.4rem;letter-spacing:-0.01em}
+.fg{margin-bottom:1rem}
+.fl{font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mid);display:block;margin-bottom:.38rem}
+.fi,.fta{width:100%;padding:.75rem 1rem;background:var(--blush);border:1.5px solid var(--border);border-radius:9px;font-family:'Plus Jakarta Sans',sans-serif;font-size:.87rem;color:var(--ink);outline:none;transition:all .2s}
+.fi:focus,.fta:focus{border-color:var(--rose);background:#fff;box-shadow:0 0 0 3px rgba(196,96,122,.1)}
+.fta{min-height:110px;resize:vertical;line-height:1.6}
+.fr_{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.bsend{display:flex;align-items:center;justify-content:center;gap:.55rem;background:var(--rose);color:#fff;padding:.85rem 2rem;font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:10px;border:none;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:all .28s ease;width:100%;margin-top:.5rem}
+.bsend:hover{background:var(--rose2);transform:translateY(-2px);box-shadow:0 10px 28px rgba(196,96,122,.3)}
+.bsend:active{transform:translateY(0)}
+.bemail{display:flex;align-items:center;justify-content:center;gap:.55rem;background:var(--rose);color:#fff;padding:.85rem 1.85rem;font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:10px;text-decoration:none;transition:all .28s ease;margin-top:1.25rem}
+.bemail:hover{background:var(--rose2);transform:translateY(-2px);box-shadow:0 10px 28px rgba(196,96,122,.3)}
+.blin{display:flex;align-items:center;justify-content:center;gap:.55rem;background:transparent;color:var(--rose);padding:.82rem 1.85rem;font-size:.8rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:10px;text-decoration:none;transition:all .28s ease;margin-top:.65rem;border:1.5px solid var(--rose)}
+.blin:hover{background:var(--blush2);transform:translateY(-2px);box-shadow:0 6px 20px rgba(196,96,122,.15)}
+
+.div{height:1px;background:var(--border);margin:2.5rem 0}
+.sect{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:var(--ink);margin-bottom:1.4rem;letter-spacing:-0.02em}
+.sect em{font-style:italic;color:var(--rose)}
+</style>
+</head>
+<body>
+<div class="cur" id="cur"></div>
+<div class="curR" id="curR"></div>
+<div class="root">
+
+<!-- ═══ SIDEBAR ═══ -->
+<aside class="side">
+  <div class="side-inner">
+    <div class="brand">
+      <div class="brand-name">Pragya<br>Kapoor</div>
+      <div class="brand-role">SEO &amp; Digital Marketing</div>
+    </div>
+    <nav><ul class="snav">
+      <li><a href="#" data-page="home" class="active"><span class="nicon">🏠</span>Home</a></li>
+      <li><a href="#" data-page="about"><span class="nicon">👤</span>About</a></li>
+      <li><a href="#" data-page="work"><span class="nicon">📈</span>Case Studies</a></li>
+      <li><a href="#" data-page="audits"><span class="nicon">🔍</span>Client Audits</a></li>
+      <li><a href="#" data-page="skills"><span class="nicon">⚡</span>Skills &amp; Tools</a></li>
+      <li><a href="#" data-page="contact"><span class="nicon">✉</span>Get in Touch</a></li>
+    </ul></nav>
+    <div class="side-avail"><span class="avdot"></span><span class="avtext">Open to opportunities</span></div>
+    <div class="side-links">
+      <a href="mailto:pragyakapoor100@gmail.com"><span class="lico">✉</span>pragyakapoor100@gmail.com</a>
+      <a href="tel:+447553625370"><span class="lico">📞</span>+44 7553 625370</a>
+      <a href="https://www.linkedin.com/in/pragyakapoor100" target="_blank" rel="noopener"><span class="lico">💼</span>linkedin.com/in/pragyakapoor100</a>
+    </div>
+  </div>
+</aside>
+
+<!-- ═══ CONTENT ═══ -->
+<div class="content" id="ca">
+
+  <!-- HOME -->
+  <div class="page active" id="page-home">
+    <div class="home-hero">
+      <div class="ph-orb a"></div><div class="ph-orb b"></div><div class="ph-orb c"></div><div class="ph-lines"></div>
+      <div class="htag">SEO Specialist · Digital Marketer · Manchester, UK</div>
+      <h1 class="hhl">
+        <span class="ln"><span>I make brands</span></span>
+        <span class="ln"><span>impossible to</span></span>
+        <span class="ln"><span><em>ignore in search.</em></span></span>
+      </h1>
+      <p class="hp">Full-stack SEO and digital marketing specialist with a proven track record growing organic traffic, building authority, and converting clicks into customers — across e-commerce, health, tech, and heavy industry.</p>
+      <div class="chips"><span class="chip">Technical SEO</span><span class="chip">E-Commerce</span><span class="chip">Link Building</span><span class="chip">Digital PR</span><span class="chip">Shopify SEO</span><span class="chip">Content Strategy</span><span class="chip">Core Web Vitals</span><span class="chip">E-E-A-T</span></div>
+      <div class="hstats">
+        <div class="hs"><span class="hsv"><span class="cnt" data-to="40">0</span>%</span><span class="hsl">Visibility growth</span></div>
+        <div class="hs"><span class="hsv"><span class="cnt" data-to="1000">0</span>+</span><span class="hsl">Backlinks built</span></div>
+        <div class="hs"><span class="hsv"><span class="cnt" data-to="25">0</span>%</span><span class="hsl">Conversion uplift</span></div>
+        <div class="hs"><span class="hsv"><span class="cnt" data-to="500">0</span>+</span><span class="hsl">Keyword projects</span></div>
+      </div>
+    </div>
+    <div class="ticker" aria-hidden="true"><div class="tt"><span class="ti">Technical SEO</span><span class="ts"> ✦ </span><span class="ti">Content Strategy</span><span class="ts"> ✦ </span><span class="ti">Link Building</span><span class="ts"> ✦ </span><span class="ti">E-Commerce SEO</span><span class="ts"> ✦ </span><span class="ti">Digital PR</span><span class="ts"> ✦ </span><span class="ti">Shopify SEO</span><span class="ts"> ✦ </span><span class="ti">Core Web Vitals</span><span class="ts"> ✦ </span><span class="ti">E-E-A-T Strategy</span><span class="ts"> ✦ </span><span class="ti">Local SEO</span><span class="ts"> ✦ </span><span class="ti">Technical SEO</span><span class="ts"> ✦ </span><span class="ti">Content Strategy</span><span class="ts"> ✦ </span><span class="ti">Link Building</span><span class="ts"> ✦ </span><span class="ti">E-Commerce SEO</span><span class="ts"> ✦ </span><span class="ti">Digital PR</span><span class="ts"> ✦ </span><span class="ti">Shopify SEO</span><span class="ts"> ✦ </span><span class="ti">Core Web Vitals</span><span class="ts"> ✦ </span><span class="ti">E-E-A-T Strategy</span><span class="ts"> ✦ </span><span class="ti">Local SEO</span><span class="ts"> ✦ </span></div></div>
+    <div style="padding:2.5rem 4rem 4rem">
+      <div class="ey rv" style="margin-bottom:1rem">Explore</div>
+      <div class="feat-grid">
+        <a class="fcard rv" data-nav="about" style="transition-delay:.05s"><div class="fcard-glow"></div><span class="fcard-ico">👤</span><div class="fcard-tag">About Me</div><div class="fcard-title">Background &amp; Story</div><div class="fcard-sub">MSc Marketing, 1st place SEO challenge, 3 years growing organic traffic</div><span class="fcard-arr">↗</span></a>
+        <a class="fcard rv" data-nav="work" style="transition-delay:.11s"><div class="fcard-glow"></div><span class="fcard-ico">📈</span><div class="fcard-tag">Case Studies</div><div class="fcard-title">Results That Speak</div><div class="fcard-sub">+40% visibility, 1,000+ backlinks, 500+ keyword projects and Shopify wins</div><span class="fcard-arr">↗</span></a>
+        <a class="fcard rv" data-nav="audits" style="transition-delay:.17s"><div class="fcard-glow"></div><span class="fcard-ico">🔍</span><div class="fcard-tag">Client Audits</div><div class="fcard-title">Real Fixes, Real Impact</div><div class="fcard-sub">Enfobar e-commerce audit &amp; Home Detox UK full SEO + PR strategy</div><span class="fcard-arr">↗</span></a>
+        <a class="fcard rv" data-nav="skills" style="transition-delay:.23s"><div class="fcard-glow"></div><span class="fcard-ico">⚡</span><div class="fcard-tag">Skills &amp; Tools</div><div class="fcard-title">Full SEO Arsenal</div><div class="fcard-sub">Technical, on-page, off-page, content strategy and the complete tool stack</div><span class="fcard-arr">↗</span></a>
+        <a class="fcard rv" data-nav="contact" style="transition-delay:.29s"><div class="fcard-glow"></div><span class="fcard-ico">✉</span><div class="fcard-tag">Get in Touch</div><div class="fcard-title">Let's Work Together</div><div class="fcard-sub">Available for SEO and digital marketing roles — full-time or freelance</div><span class="fcard-arr">↗</span></a>
+        <div class="fcard rv" style="background:linear-gradient(135deg,var(--rose),var(--rose2));border-color:var(--rose);cursor:default;transition-delay:.35s"><div class="fcard-glow"></div><span class="fcard-ico">✨</span><div class="fcard-tag" style="color:rgba(255,255,255,.55)">Status</div><div class="fcard-title" style="color:#fff">Open to Work</div><div class="fcard-sub" style="color:rgba(255,255,255,.7)">Available for SEO opportunities in Manchester and remote roles worldwide</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <div class="page" id="page-about">
+    <div class="ph"><div class="ph-orb a"></div><div class="ph-orb b"></div><div class="ph-lines"></div>
+      <div class="ey">About Me</div>
+      <h1 class="pt">The marketer behind<br>the <em>organic growth.</em></h1>
+      <p class="psub">Three years turning clicks into customers across e-commerce, SaaS, health, and heavy industry — with an MSc, a 1st-place SEO award, and a relentless focus on results.</p>
+    </div>
+    <div class="pb">
+      <div class="two-col">
+        <div class="at rv">
+          <p>I'm Pragya Kapoor — a <strong>full-stack SEO and digital marketing specialist</strong> based in Manchester with three years of delivering measurable organic growth across competitive UK and US markets.</p>
+          <p>My expertise covers the full digital marketing mix: <strong>technical SEO, content strategy, on-page optimisation, off-page authority building, digital PR,</strong> and specialist <strong>Shopify e-commerce SEO</strong>. I'm passionate about connecting brands with the audiences who are already searching for them.</p>
+          <p>I hold an <strong>MSc in Marketing (Merit)</strong> from the University of Liverpool, where I placed <strong>1st in a competitive SEO Audit Challenge</strong> — beating peers across the programme and winning an internship at Quirky Digital.</p>
+          <p>Whether it's a technical audit, a content overhaul, or a link-building campaign from scratch — I build the organic infrastructure that makes brands <strong>impossible to ignore.</strong></p>
+        </div>
+        <div class="kstack rv rr">
+          <div class="kcard"><div class="kv">+40%</div><div class="kl"><strong>Organic visibility growth</strong>within 6 months — Victora Lifts</div></div>
+          <div class="kcard"><div class="kv">1,000+</div><div class="kl"><strong>High-quality backlinks built</strong>driving +25% Domain Rating</div></div>
+          <div class="kcard"><div class="kv">+25%</div><div class="kl"><strong>Organic conversion uplift</strong>through full-site redesign</div></div>
+          <div class="kcard"><div class="kv">500+</div><div class="kl"><strong>Keyword research projects</strong>delivered at Quirky Digital</div></div>
+        </div>
+      </div>
+      <div class="div rv"></div>
+      <div class="rv"><div class="sect">Education</div>
+        <div class="edu-grid">
+          <div class="ecard"><div class="ed">MSc Marketing — Merit (2:1)</div><div class="esc">University of Liverpool</div><div class="edt">Sep 2024 – Dec 2025</div><div class="em_">Marketing Strategy · Consumer Behaviour · UX · Digital Marketing · Analytics · Digital Design · Marketing Communications · Services Marketing</div></div>
+          <div class="ecard"><div class="ed">Bachelor of Commerce — Distinction</div><div class="esc">University of Delhi</div><div class="edt">Jul 2018 – Jul 2021</div><div class="em_">Principles of Marketing · Business Statistics · Financial Accounting · Business Communication · Entrepreneurship</div></div>
+        </div>
+      </div>
+      <div class="div rv"></div>
+      <div class="rv"><div class="sect">Awards &amp; Recognition</div>
+        <div class="agrd">
+          <div class="acard"><span class="aico">🥇</span><div class="aname">1st Place — SEO Audit Challenge</div><div class="aorg">University of Liverpool · March 2025</div><p class="adesc">Won a competitive brand audit covering SEO, UX, and content strategy — directly leading to an internship at Quirky Digital.</p></div>
+          <div class="acard"><span class="aico">⭐</span><div class="aname">Performer of the Year</div><div class="aorg">Creative Brains · December 2021</div><p class="adesc">Recognised for the highest backlink generation and top team performance. Multiple Best Team of the Quarter awards throughout tenure.</p></div>
+          <div class="acard"><span class="aico">🎓</span><div class="aname">MSc Marketing — Merit (2:1)</div><div class="aorg">University of Liverpool · 2024–2025</div><p class="adesc">Postgraduate study in Marketing Strategy, Consumer Behaviour, UX, Digital Marketing, and Analytics — applied directly to real-world work.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WORK -->
+  <div class="page" id="page-work">
+    <div class="ph"><div class="ph-orb a"></div><div class="ph-orb b"></div><div class="ph-lines"></div>
+      <div class="ey">Case Studies</div>
+      <h1 class="pt">Results that<br><em>speak for themselves.</em></h1>
+      <p class="psub">Four real campaigns — content strategy, link building, e-commerce SEO, and on-page optimisation — each delivering measurable results for real clients.</p>
+    </div>
+    <div class="pb">
+
+      <div class="wcard rv">
+        <div class="wbar"></div>
+        <div class="wtop"><div class="tags"><span class="tag">SEO Internship</span><span class="tag">Content Strategy</span><span class="tag">Local SEO</span></div><span class="wdate">May 2025 – Aug 2025</span></div>
+        <div class="wtitle">500+ keyword projects and 20% conversion uplift — Quirky Digital</div>
+        <div class="wco">SEO Specialist (Digital Marketing Intern) · Quirky Digital</div>
+        <div class="wb">Delivered 500+ keyword research projects using GA4, Google Search Console, and Semrush — identifying performance gaps and shaping content strategy across high-profile client portfolios. Built and implemented content clustering and on-page optimisation strategies using E-E-A-T principles, lifting organic visibility for blog and off-page assets. Managed Local SEO including Google Business Profile optimisation, review strategy, and citation management for multi-location clients. Contributed to a site revamp project improving site architecture and navigation — resulting in a 20% uplift in conversion pathways. Produced client-facing Looker Studio reports translating organic KPI data into clear, prioritised recommendations for stakeholder review.</div>
+        <div class="wm"><div><span class="wmv">500+</span><span class="wml">Keyword projects</span></div><div><span class="wmv">+20%</span><span class="wml">Conversion uplift</span></div><div><span class="wmv">E-E-A-T</span><span class="wml">Content strategy</span></div><div><span class="wmv">Local SEO</span><span class="wml">GBP &amp; citations</span></div></div>
+      </div>
+
+      <div class="wcard rv">
+        <div class="wbar"></div>
+        <div class="wtop"><div class="tags"><span class="tag">Heavy Industry</span><span class="tag">Technical SEO</span><span class="tag">B2B</span></div><span class="wdate">Dec 2023 – Aug 2024</span></div>
+        <div class="wtitle">40% organic visibility growth in 6 months — Victora Lifts</div>
+        <div class="wco">Digital Marketing Executive · Victora Lifts</div>
+        <div class="wb">Rebuilt the technical SEO foundation from scratch for a heavy-industry B2B brand — Core Web Vitals optimisation, metadata strategy, crawlability, and internal linking architecture. Led a full-site redesign focused on lead-capture funnels, then ran a targeted backlink acquisition programme to build domain authority in a slow-moving niche. Delivered executive-level reporting translating SEO data into clear commercial impact.</div>
+        <div class="wm"><div><span class="wmv">+40%</span><span class="wml">Organic visibility</span></div><div><span class="wmv">+25%</span><span class="wml">Conversion rate</span></div><div><span class="wmv">+15%</span><span class="wml">Domain Authority</span></div><div><span class="wmv">6 mo</span><span class="wml">Time to results</span></div></div>
+      </div>
+
+      <div class="wcard rv">
+        <div class="wbar"></div>
+        <div class="wtop"><div class="tags"><span class="tag">Multi-Vertical</span><span class="tag">Link Building</span><span class="tag">Digital PR</span></div><span class="wdate">Feb 2022 – Sep 2023</span></div>
+        <div class="wtitle">1,000+ backlinks and 25% Domain Rating lift — Creative Brains</div>
+        <div class="wco">SEO &amp; Digital Marketing Specialist · Creative Brains</div>
+        <div class="wb">Built end-to-end link-building operations for clients across CBD, tech, health, and fashion in competitive UK and US markets. Managed 400+ digital PR outreach prospects, ran competitor gap analysis, backlink audits, and URL clustering. Mentored a team of 20 SEOs on link strategy and outreach best practice. Delivered monthly Looker Studio performance dashboards to all clients, tracking domain authority, SERP trends, and organic KPIs.</div>
+        <div class="wm"><div><span class="wmv">1,000+</span><span class="wml">Backlinks built</span></div><div><span class="wmv">+25%</span><span class="wml">Domain Rating</span></div><div><span class="wmv">400+</span><span class="wml">PR prospects</span></div><div><span class="wmv">20</span><span class="wml">SEOs mentored</span></div></div>
+      </div>
+
+      <div class="wcard rv">
+        <div class="wbar"></div>
+        <div class="wtop"><div class="tags"><span class="tag">E-Commerce</span><span class="tag">Shopify</span><span class="tag">Freelance</span></div><span class="wdate">2023 – Present</span></div>
+        <div class="wtitle">End-to-end Shopify SEO revamp — Freelance Clients</div>
+        <div class="wco">Freelance SEO Consultant · Self-Employed</div>
+        <div class="wb">Full e-commerce SEO overhauls for independent Shopify clients: site architecture restructures, product and collection page optimisation, faceted navigation fixes, e-commerce schema markup, and metadata strategy aligned to commercial-intent keywords. Delivered full technical and on-page SEO audits with prioritised strategy roadmaps, content revamps, and link-building campaign management for SMBs across the UK.</div>
+        <div class="wm"><div><span class="wmv">Shopify</span><span class="wml">Platform specialist</span></div><div><span class="wmv">E-E-A-T</span><span class="wml">Content framework</span></div><div><span class="wmv">Schema</span><span class="wml">E-commerce markup</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AUDITS -->
+  <div class="page" id="page-audits">
+    <div class="ph"><div class="ph-orb a"></div><div class="ph-orb b"></div><div class="ph-lines"></div>
+      <div class="ey">Client Audits</div>
+      <h1 class="pt">Real websites.<br><em>Real fixes.</em></h1>
+      <p class="psub">Two full client audits — Enfobar (e-commerce) and Home Detox UK (health &amp; recovery) — every issue identified, diagnosed, and fixed.</p>
+    </div>
+    <div class="pb">
+      <div style="margin-bottom:2.75rem">
+        <div class="ah rv"><div><div class="an">Enfobar — E-Commerce SEO Audit</div><div class="asb">UK-based e-commerce brand · 7 critical issues identified &amp; resolved · +195% traffic growth in period</div></div><span class="abadge">E-Commerce</span></div>
+        <div class="ig">
+          <div class="ic rv" style="transition-delay:.05s"><div class="in_">Issue 01 · Keywords</div><div class="it">Wrong-country keyword ranking</div><div class="ib_">US clicks doubled UK clicks despite targeting UK/Ireland. Identified low-difficulty, high-volume keywords (avg. KD 16.67%, vol. 31,200) to refocus geo-targeting toward intended markets.</div></div>
+          <div class="ic rv" style="transition-delay:.1s"><div class="in_">Issue 02 · On-Page</div><div class="it">Missing H1 headings across all product pages</div><div class="ib_">Product and category pages lacked H1 tags — a fundamental indexation signal. Identified all affected URLs and delivered a full remediation checklist.</div></div>
+          <div class="ic rv" style="transition-delay:.15s"><div class="in_">Issue 03 · Content</div><div class="it">No descriptions + duplicate content</div><div class="ib_">Hundreds of pages had blank descriptions. Colour-variant pages shared identical copy — triggering keyword cannibalization. Recommended consolidation, canonical tags, and product schema.</div></div>
+          <div class="ic rv" style="transition-delay:.2s"><div class="in_">Issue 04 · UX</div><div class="it">Missing product images sitewide</div><div class="ib_">Key product pages lacked images — reducing SERP visibility and user trust. Identified all affected URLs and mapped an image optimisation protocol.</div></div>
+          <div class="ic rv" style="transition-delay:.25s"><div class="in_">Issue 05 · Core Web Vitals</div><div class="it">Mobile performance score: 36</div><div class="ib_">LCP of 10.8s and TBT of 2,010ms on mobile vs LCP 1.4s on desktop. Delivered prioritised fix roadmap: image compression, JS reduction, blocking-resource elimination.</div></div>
+          <div class="ic rv" style="transition-delay:.3s"><div class="in_">Issue 06 · Indexation</div><div class="it">Canonical tag errors + 404 pages</div><div class="ib_">Product variant pages weren't indexed due to canonical misconfigurations. 404 errors wasted crawl budget. Mapped full 301 redirect strategy and sitemap cleanup.</div></div>
+        </div>
+        <div class="ic rv"><div class="in_">Issue 07 · Technical</div><div class="it">Robots.txt blocking key trust pages</div><div class="ib_">Shipping, Privacy Policy, and Terms of Service pages were blocked from crawling. Recommended directive removal to restore indexation of critical trust signals.</div></div>
+      </div>
+      <div class="div rv"></div>
+      <div>
+        <div class="ah rv"><div><div class="an">Home Detox UK — Full SEO + Digital PR Audit</div><div class="asb">Health &amp; Recovery brand · On-Page + Off-Page + Technical + Digital PR Strategy</div></div><span class="abadge tl">Health / Recovery</span></div>
+        <div class="asr rv"><div class="sc_"><div class="sl">On-Page</div><div class="sv">Meta description audit, E-E-A-T checklist, keyword clustering via Semrush</div></div><div class="sc_"><div class="sl">Local SEO</div><div class="sv">GBP optimisation &amp; citation analysis to strengthen UK presence</div></div><div class="sc_"><div class="sl">Technical</div><div class="sv">Core Web Vitals · robots.txt · sitemap audit · MOZ domain analysis</div></div><div class="sc_"><div class="sl">Competitor</div><div class="sv">Keyword gap analysis &amp; traffic channel benchmarking</div></div></div>
+        <div style="font-size:.63rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--mid);margin-bottom:.85rem" class="rv">Digital PR Campaigns Designed</div>
+        <div class="prg">
+          <div class="prc rv" style="transition-delay:.05s"><div class="prn">Campaign 01</div><div class="prt">"What No One Tells You About the First 30 Days of Sobriety"</div><div class="prb">Anonymous story collection, therapist collaboration, downloadable sobriety journal. Pitched to Stylist, The Independent, Happiful &amp; Refinery29 for Sober October and Dry January peaks.</div></div>
+          <div class="prc rv" style="transition-delay:.12s"><div class="prn">Campaign 02</div><div class="prt">"The Hidden Cost of Addiction on the NHS"</div><div class="prb">NHS/ONS data-led report with infographic asset and expert commentary. Pitched to Sky News, BBC Health, The Guardian, and BMJ to drive high-DA editorial backlinks.</div></div>
+          <div class="prc rv" style="transition-delay:.19s"><div class="prn">Campaign 03</div><div class="prt">"Why UK Employers Should Offer At-Home Detox as a Workplace Benefit"</div><div class="prb">Whitepaper + HR toolkit pitched to Personnel Today, City A.M., and LinkedIn News — positioning home detox as a B2B workplace wellbeing solution.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="page" id="page-skills">
+    <div class="ph"><div class="ph-orb a"></div><div class="ph-orb b"></div><div class="ph-lines"></div>
+      <div class="ey">Skills &amp; Tools</div>
+      <h1 class="pt">Built to rank.<br><em>Across every discipline.</em></h1>
+      <p class="psub">Full-stack SEO and digital marketing competencies — from technical audits to content strategy, PR campaigns, e-commerce, and analytics reporting.</p>
+    </div>
+    <div class="pb">
+      <div class="rv"><div class="sect">Core Competencies</div>
+        <div class="srows">
+          <div class="srow"><div class="scat">Technical SEO</div><div class="sis_"><span class="si">Schema markup</span><span class="si">XML sitemaps</span><span class="si">Indexation management</span><span class="si">Crawl budget</span><span class="si">Redirect management</span><span class="si">Core Web Vitals</span><span class="si">Site speed</span><span class="si">hreflang</span><span class="si">Canonicalisation</span><span class="si">Robots.txt</span></div></div>
+          <div class="srow"><div class="scat">On-Page &amp; Content</div><div class="sis_"><span class="si">SERP analysis</span><span class="si">Content clustering</span><span class="si">Internal linking</span><span class="si">E-E-A-T optimisation</span><span class="si">Metadata strategy</span><span class="si">Keyword mapping</span><span class="si">Structured data</span><span class="si">Content strategy</span><span class="si">Blog optimisation</span></div></div>
+          <div class="srow"><div class="scat">Off-Page &amp; PR</div><div class="sis_"><span class="si">Link-building strategy</span><span class="si">Digital PR outreach</span><span class="si">Prospect identification</span><span class="si">Citation management</span><span class="si">Local SEO</span><span class="si">Google Business Profile</span><span class="si">Media pitching</span></div></div>
+          <div class="srow"><div class="scat">E-Commerce SEO</div><div class="sis_"><span class="si">Shopify optimisation</span><span class="si">Product page SEO</span><span class="si">Collection pages</span><span class="si">Faceted navigation</span><span class="si">Conversion architecture</span><span class="si">E-commerce schema</span></div></div>
+          <div class="srow"><div class="scat">Analytics</div><div class="sis_"><span class="si">GA4</span><span class="si">Google Search Console</span><span class="si">Looker Studio</span><span class="si">Stakeholder reporting</span><span class="si">KPI tracking</span><span class="si">Semrush reporting</span></div></div>
+        </div>
+      </div>
+      <div class="div rv"></div>
+      <div class="rv"><div class="sect">Tool Stack</div>
+        <div class="twr"><span class="tb">Ahrefs</span><span class="tb">Semrush</span><span class="tb">Moz Pro</span><span class="tb">Screaming Frog</span><span class="tb">Google Search Console</span><span class="tb">GA4</span><span class="tb">Looker Studio</span><span class="tb">WordPress</span><span class="tb">RankMath</span><span class="tb">Yoast</span><span class="tb">Shopify</span><span class="tb">PageSpeed Insights</span><span class="tb">Hubstaff</span><span class="tb">Notion</span><span class="tb">Slack</span><span class="tb">Google Workspace</span><span class="tb">ChatGPT</span><span class="tb">Claude</span><span class="tb">Gemini</span><span class="tb">Excel</span></div>
+      </div>
+      <div class="div rv"></div>
+      <div class="rv"><div class="sect">Certifications</div>
+        <div class="cgrd"><div class="crt"><span class="cdot"></span>SEO Certification — HubSpot Academy</div><div class="crt"><span class="cdot"></span>Google Analytics 4 (GA4) — Google Skillshop</div><div class="crt"><span class="cdot"></span>Technical SEO — LinkedIn Learning</div><div class="crt"><span class="cdot"></span>Content-Led SEO with Brian Dean — HubSpot Academy</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="page" id="page-contact">
+    <div class="ph"><div class="ph-orb a"></div><div class="ph-orb b"></div><div class="ph-lines"></div>
+      <div class="ey">Get in Touch</div>
+      <h1 class="pt">Let's grow something<br><em>remarkable together.</em></h1>
+      <p class="psub">Whether you need a technical SEO overhaul, a content strategy, or a full digital marketing partnership — I'd love to hear from you.</p>
+      <div class="avb_"><span class="avdot2"></span>Open to opportunities · Available now</div>
+    </div>
+    <div class="pb">
+      <div class="cgrd2">
+        <div class="rv">
+          <div class="ccard"><div class="cclbl">Email</div><div class="ccval"><a href="mailto:pragyakapoor100@gmail.com">pragyakapoor100@gmail.com</a></div></div>
+          <div class="ccard"><div class="cclbl">Phone</div><div class="ccval"><a href="tel:+447553625370">+44 7553 625370</a></div></div>
+          <div class="ccard"><div class="cclbl">Location</div><div class="ccval">Manchester, United Kingdom</div></div>
+          <div class="ccard"><div class="cclbl">LinkedIn</div><div class="ccval"><a href="https://www.linkedin.com/in/pragyakapoor100" target="_blank" rel="noopener">linkedin.com/in/pragyakapoor100</a></div></div>
+          <a href="mailto:pragyakapoor100@gmail.com?subject=SEO%20Enquiry%20%E2%80%94%20Portfolio&body=Hi%20Pragya%2C%0A%0AI%20came%20across%20your%20portfolio%20and%20would%20love%20to%20discuss%20an%20opportunity." class="bemail">✉ &nbsp; Email Me Directly</a>
+          <a href="https://www.linkedin.com/in/pragyakapoor100" target="_blank" rel="noopener" class="blin">💼 &nbsp; Connect on LinkedIn</a>
+        </div>
+        <div class="rv rr">
+          <div class="cform">
+            <div class="cft">Send a message</div>
+            <div class="fr_">
+              <div class="fg"><label class="fl">First Name</label><input class="fi" type="text" placeholder="Your first name" id="fn"></div>
+              <div class="fg"><label class="fl">Last Name</label><input class="fi" type="text" placeholder="Your last name" id="ln_"></div>
+            </div>
+            <div class="fg"><label class="fl">Email Address</label><input class="fi" type="email" placeholder="your@email.com" id="fe"></div>
+            <div class="fg"><label class="fl">Company / Role</label><input class="fi" type="text" placeholder="Your company or role (optional)" id="fc"></div>
+            <div class="fg"><label class="fl">Message</label><textarea class="fta" placeholder="Tell me about your project, goals, and timeline..." id="fm"></textarea></div>
+            <button class="bsend" onclick="sendMsg(this)">Send Message &nbsp;→</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /content -->
+</div><!-- /root -->
+
+<script>
+/* CURSOR */
+const cur=document.getElementById('cur'),curR=document.getElementById('curR');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
+(function loop(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;curR.style.left=rx+'px';curR.style.top=ry+'px';requestAnimationFrame(loop)})();
+document.querySelectorAll('a,button,.wcard,.kcard,.acard,.ic,.fcard,.ccard,.prc,.tb,.si').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{curR.style.width='64px';curR.style.height='64px';curR.style.opacity='.16';cur.style.width='8px';cur.style.height='8px'});
+  el.addEventListener('mouseleave',()=>{curR.style.width='48px';curR.style.height='48px';curR.style.opacity='.28';cur.style.width='14px';cur.style.height='14px'});
+});
+
+/* PAGES */
+const pages={};
+document.querySelectorAll('.page').forEach(p=>pages[p.id.replace('page-','')]=p);
+const navLinks=document.querySelectorAll('.snav a');
+const ca=document.getElementById('ca');
+let curPg='home';
+
+function goTo(name){
+  if(name===curPg||!pages[name])return;
+  const prev=pages[curPg],next=pages[name];
+  prev.classList.add('out');
+  setTimeout(()=>{prev.classList.remove('active','out')},260);
+  setTimeout(()=>{next.classList.add('active');ca.scrollTop=0;initPage(name);curPg=name},210);
+  navLinks.forEach(a=>{a.classList.remove('active');if(a.dataset.page===name)a.classList.add('active')});
+}
+navLinks.forEach(a=>a.addEventListener('click',e=>{e.preventDefault();goTo(a.dataset.page)}));
+document.querySelectorAll('[data-nav]').forEach(el=>el.addEventListener('click',e=>{e.preventDefault();goTo(el.dataset.nav)}));
+
+/* REVEAL */
+const rvObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');rvObs.unobserve(e.target)}});
+},{threshold:.07,rootMargin:'0px 0px -15px 0px',root:ca});
+function initReveal(c){c.querySelectorAll('.rv').forEach(el=>{el.classList.remove('in');rvObs.observe(el)})}
+initReveal(pages['home']);
+
+/* COUNT UP */
+function countUp(el,to,dur=1600){const s=performance.now();(function step(n){const p=Math.min((n-s)/dur,1);el.textContent=Math.floor((1-Math.pow(1-p,4))*to);if(p<1)requestAnimationFrame(step);else el.textContent=to})(performance.now())}
+function initCount(c){c.querySelectorAll('.cnt').forEach(el=>{const io=new IntersectionObserver(en=>{en.forEach(e=>{if(e.isIntersecting){countUp(e.target,+e.target.dataset.to);io.unobserve(e.target)}})},{threshold:.5,root:ca});io.observe(el)})}
+initCount(pages['home']);
+function initPage(name){initReveal(pages[name]);initCount(pages[name])}
+
+/* CONTACT FORM */
+function sendMsg(btn){
+  const email=document.getElementById('fe').value.trim();
+  const msg=document.getElementById('fm').value.trim();
+  const name=document.getElementById('fn').value.trim()||'there';
+  if(!email||!msg){btn.textContent='⚠ Please fill in email and message';btn.style.background='#9F3A55';setTimeout(()=>{btn.innerHTML='Send Message &nbsp;→';btn.style.background=''},2500);return}
+  window.location.href='mailto:pragyakapoor100@gmail.com?subject=SEO%20Enquiry%20from%20'+encodeURIComponent(name)+'&body='+encodeURIComponent('Hi Pragya,\n\n'+msg+'\n\nFrom: '+name+'\nEmail: '+email);
+  btn.innerHTML='✓ Opening your email client...';btn.style.background='#15803D';
+  setTimeout(()=>{btn.innerHTML='Send Message &nbsp;→';btn.style.background=''},3000);
+}
+</script>
+</body>
+</html>
