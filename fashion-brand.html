@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DTC Fashion Brand — SEO Case Study · Pragya Kapoor</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/case-study.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav__logo"><a href="../index.html">PRAGYA<span class="accent">SEO</span></a></div>
+    <ul class="nav__links">
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#services">Services</a></li>
+      <li><a href="../index.html#work">Case Studies</a></li>
+      <li><a href="../index.html#contact">Hire Me</a></li>
+    </ul>
+    <a href="../index.html#contact" class="btn btn--sm">Open to Work</a>
+  </nav>
+
+  <header class="case-hero">
+    <a href="../index.html#work" class="case-hero__back">← Back to Case Studies</a>
+    <div class="case-hero__meta">
+      <span class="tag tag--light">E-Commerce</span>
+      <span class="tag tag--light">Technical SEO</span>
+      <span class="tag tag--light">Content Audit</span>
+      <span class="tag tag--light">Core Web Vitals</span>
+    </div>
+    <h1>DTC Fashion<br/>Brand</h1>
+    <p class="case-hero__sub">How 400+ thin pages competing for the same 12 keywords were silently cannibalising an entire brand's organic performance — and how a systematic audit reversed 6 months of traffic decline in under 6 weeks.</p>
+    <div class="case-hero__stats">
+      <div class="case-hero__stat"><span>+287%</span>Organic Traffic</div>
+      <div class="case-hero__stat"><span>-62%</span>Crawl Waste</div>
+      <div class="case-hero__stat"><span>6.2s → 1.8s</span>LCP Improvement</div>
+      <div class="case-hero__stat"><span>6 weeks</span>Time to Results</div>
+    </div>
+  </header>
+
+  <main class="case-body">
+
+    <section class="cs-section">
+      <h2>The Situation</h2>
+      <p>The client came to me in a state of quiet panic. A direct-to-consumer fashion brand with a mid-size catalogue, they had been publishing 8–10 blog posts a week for over a year — genuinely good content written by a talented in-house copywriter. Despite this effort, organic traffic had dropped 18% month-on-month for six consecutive months. Their instinct was that they needed to publish even more. The audit revealed the opposite was true.</p>
+      <p>Before any tooling, I did a manual walkthrough of the site. Within 20 minutes I could see the symptom: dozens of near-identical category pages, blog posts targeting identical search queries with slightly different titles, and product filter URLs being indexed by Google en masse. The site wasn't being ignored — it was confusing search engines with too many competing signals.</p>
+    </section>
+
+    <div class="cs-callout">
+      "They didn't need more content. They needed Google to understand the content they already had."
+    </div>
+
+    <section class="cs-section">
+      <h2>Audit Scope & Methodology</h2>
+      <p>I scoped a Full-Stack audit covering technical, content, and crawlability layers. The audit ran across six days and was structured in three phases:</p>
+
+      <h3>Phase 1 — Technical Crawl (Days 1–2)</h3>
+      <p>Using Sitebulb Pro on a full crawl of the site's 9,400 URLs, I extracted indexability status, canonical chains, internal link counts per page, redirect paths, and response code mapping. I also ran a crawl simulation via the Google Search Console URL Inspection API on a random sample of 200 URLs to cross-reference what Googlebot was actually seeing versus what Sitebulb found.</p>
+
+      <h3>Phase 2 — Content & Keyword Analysis (Days 3–4)</h3>
+      <p>Using Ahrefs Site Explorer and a GSC data export covering the last 16 months, I mapped every URL with impressions against its primary keyword and identified clusters where multiple pages were splitting traffic for the same query. I also pulled word count and unique content percentage from the crawl data to quantify the thin content problem.</p>
+
+      <h3>Phase 3 — Core Web Vitals & UX (Days 5–6)</h3>
+      <p>Using Chrome UX Report (CrUX) field data alongside WebPageTest lab tests, I identified the specific elements causing LCP failure on mobile: unoptimised hero images (85% served as uncompressed PNGs, many over 2MB), render-blocking third-party scripts loaded synchronously in the head, and no lazy loading on below-fold images.</p>
+    </section>
+
+    <section class="cs-section">
+      <h2>Key Findings</h2>
+
+      <div class="cs-finding">
+        <div class="cs-finding__num">01</div>
+        <div>
+          <h3>Content Cannibalisation at Scale</h3>
+          <p>417 indexable pages. 312 of them had fewer than 300 words of unique content. More critically, 72 URL variants were competing for the same primary keyword cluster — terms like "women's linen trousers", "linen trousers women UK", and "linen trousers for women" each had their own standalone page, blog post, and product listing. Google was splitting its ranking consideration across all of them, meaning none ranked well for any of them.</p>
+        </div>
+      </div>
+
+      <div class="cs-finding">
+        <div class="cs-finding__num">02</div>
+        <div>
+          <h3>Faceted Navigation Generating 13,400 Junk URLs</h3>
+          <p>The product filtering system (size, colour, fabric, length) was generating unique URLs for every combination. Googlebot was dutifully discovering and attempting to crawl these — meaning it was spending the majority of its crawl budget on pages like <code>/dresses?colour=sage&size=12&length=midi</code> rather than on the actual category and product pages the brand needed to rank. None of these filter pages were blocked from crawling or indexing.</p>
+        </div>
+      </div>
+
+      <div class="cs-finding">
+        <div class="cs-finding__num">03</div>
+        <div>
+          <h3>Critical Internal Linking Gaps</h3>
+          <p>Six key category pages — including the site's most commercially important ones — had fewer than three internal links pointing to them from the rest of the site. These pages were essentially orphaned from Google's perspective. Meanwhile, older blog posts from 2021 had hundreds of internal links, hoarding PageRank that should have been flowing to the money pages.</p>
+        </div>
+      </div>
+
+      <div class="cs-finding">
+        <div class="cs-finding__num">04</div>
+        <div>
+          <h3>Core Web Vitals Failing on 91% of Product Pages</h3>
+          <p>LCP averaged 6.2 seconds on mobile — more than 3× Google's "good" threshold of 2.5 seconds. The main culprits: hero product images served as uncompressed PNGs (average 1.8MB per image), three render-blocking analytics and chat scripts loaded synchronously, and no image lazy loading implemented anywhere on the site. This was actively suppressing rankings for mobile searches, which accounted for 73% of the site's organic traffic.</p>
+        </div>
+      </div>
+
+      <div class="cs-finding">
+        <div class="cs-finding__num">05</div>
+        <div>
+          <h3>Missing Structured Data</h3>
+          <p>No ProductPage schema on any product listing pages, no BreadcrumbList markup, and no Review schema despite the site collecting customer reviews via an embedded widget. This meant Google had no structured signal for rich result eligibility — a missed opportunity for star ratings and price information in the SERPs.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <h2>The Fix Plan</h2>
+      <p>I delivered a 47-page audit report alongside a prioritised fix spreadsheet with 68 individual issues ranked by estimated monthly traffic impact. I worked with the client's dev team in a 90-minute Loom walkthrough to explain each item, then provided Notion-formatted tickets for each of the top-priority fixes.</p>
+      <p>The top priority items, in implementation order:</p>
+      <ol class="cs-list">
+        <li><strong>Faceted navigation:</strong> Noindex + nofollow rules applied to all filter URL combinations via robots meta tag injection — removing 13,400 junk URLs from Google's index over 6 weeks</li>
+        <li><strong>Content consolidation:</strong> 312 thin pages merged into 89 comprehensive ones using 301 redirects, with canonical tags set correctly on all remaining duplicates</li>
+        <li><strong>Image optimisation:</strong> All product and hero images converted from PNG to AVIF with responsive srcset attributes — average file size dropped from 1.8MB to 140KB</li>
+        <li><strong>Script loading:</strong> Three synchronous scripts moved to defer/async loading — eliminating render-blocking on first paint</li>
+        <li><strong>Internal linking:</strong> 140 new internal links added across the site's top-trafficked blog posts pointing to priority category pages</li>
+        <li><strong>Schema markup:</strong> ProductPage, BreadcrumbList, and AggregateRating structured data implemented across all PDPs and category pages</li>
+      </ol>
+    </section>
+
+    <section class="cs-section">
+      <h2>Results — 90 Days Post-Implementation</h2>
+      <table class="cs-table">
+        <thead>
+          <tr><th>Metric</th><th>Before</th><th>After (90 days)</th><th>Change</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Organic Sessions (monthly)</td><td>18,400</td><td>70,900</td><td class="positive">+287%</td></tr>
+          <tr><td>Indexed Pages</td><td>9,417</td><td>3,582</td><td class="positive">-62% crawl waste</td></tr>
+          <tr><td>Average LCP (mobile)</td><td>6.2s</td><td>1.8s</td><td class="positive">-71%</td></tr>
+          <tr><td>Top 10 Keyword Rankings</td><td>34</td><td>187</td><td class="positive">+450%</td></tr>
+          <tr><td>Organic Revenue (monthly est.)</td><td>£12,400</td><td>£48,700</td><td class="positive">+293%</td></tr>
+          <tr><td>Crawl Budget on Priority Pages</td><td>~22%</td><td>~81%</td><td class="positive">+268%</td></tr>
+        </tbody>
+      </table>
+      <p>The first ranking improvements appeared within 3 weeks of the faceted navigation fix going live — faster than expected, suggesting Googlebot was already re-crawling frequently due to the large volume of URL changes. The full traffic lift took around 6 weeks to materialise as consolidation redirects were processed and new content signals built authority.</p>
+    </section>
+
+    <section class="cs-section">
+      <h2>What I Learned</h2>
+      <p>This engagement reinforced something I see across a lot of e-commerce brands: the instinct to solve a traffic problem by producing more content is almost always wrong. More content without structural clarity creates more competition — for crawl budget, for ranking signals, and for user attention. The answer here wasn't less effort; it was effort pointed in the right direction.</p>
+      <p>The faceted navigation issue also highlighted how easily technical debt accumulates invisibly. The filtering system had been live for three years. Nobody had ever checked what it was doing to the crawl. A single afternoon of configuration work removed over 13,000 noise URLs from Google's index.</p>
+    </section>
+
+    <div class="cs-cta">
+      <h3>Seeing Similar Symptoms?</h3>
+      <p>If your site is producing content but traffic is flat or falling, there's a structural reason. Let's find it.</p>
+      <a href="../index.html#contact" class="btn btn--lg">Book an Audit</a>
+      <a href="mailto:kapoorpragya10@gmail.com" class="btn btn--outline btn--lg">Email Pragya Directly</a>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer__left">© 2025 Pragya Kapoor · SEO Audit Specialist</div>
+    <div class="footer__links">
+      <a href="mailto:kapoorpragya10@gmail.com">kapoorpragya10@gmail.com</a>
+      <a href="../index.html#work">← All Case Studies</a>
+    </div>
+  </footer>
+  <script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>B2B SaaS Platform — SEO Case Study · Pragya Kapoor</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/case-study.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav__logo"><a href="../index.html">PRAGYA<span class="accent">SEO</span></a></div>
+    <ul class="nav__links">
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#services">Services</a></li>
+      <li><a href="../index.html#work">Case Studies</a></li>
+      <li><a href="../index.html#contact">Hire Me</a></li>
+    </ul>
+    <a href="../index.html#contact" class="btn btn--sm">Open to Work</a>
+  </nav>
+
+  <header class="case-hero">
+    <a href="../index.html#work" class="case-hero__back">← Back to Case Studies</a>
+    <div class="case-hero__meta">
+      <span class="tag tag--light">B2B SaaS</span>
+      <span class="tag tag--light">Technical SEO</span>
+      <span class="tag tag--light">JavaScript Rendering</span>
+      <span class="tag tag--light">Indexability</span>
+    </div>
+    <h1>B2B SaaS<br/>Platform</h1>
+    <p class="case-hero__sub">A JavaScript-rendered application invisible to Googlebot — zero pages indexed despite 18 months of content investment. How a rendering audit, dynamic rendering implementation, and internal linking overhaul fixed the foundation and drove 410% impression growth in three months.</p>
+    <div class="case-hero__stats">
+      <div class="case-hero__stat"><span>0 → 94</span>Pages Indexed</div>
+      <div class="case-hero__stat"><span>+410%</span>GSC Impressions</div>
+      <div class="case-hero__stat"><span>3.2s → 0.8s</span>LCP (mobile)</div>
+      <div class="case-hero__stat"><span>3 months</span>Time to Results</div>
+    </div>
+  </header>
+
+  <main class="case-body">
+
+    <section class="cs-section">
+      <h2>The Situation</h2>
+      <p>The client was a B2B SaaS company offering project management tooling for creative agencies. They had been investing seriously in SEO for 18 months — a content manager publishing two long-form articles per week, a backlink outreach campaign running in the background, and a recently hired marketing manager who "knew SEO was important." Yet their Google Search Console showed a consistent flatline: zero ranking, negligible impressions, and a sitemap that Google had partially processed but barely acted on.</p>
+      <p>The marketing manager suspected the problem was link authority. The CEO suspected it was the wrong keywords. Both were wrong. The problem was that Google could not read the site at all.</p>
+    </section>
+
+    <div class="cs-callout">
+      "18 months of content, zero indexed pages. The site wasn't being ignored — it was genuinely invisible."
+    </div>
+
+    <section class="cs-section">
+      <h2>Root Cause: JavaScript Rendering</h2>
+      <p>The platform had been built as a React single-page application (SPA) with client-side rendering. This is an extremely common architecture in SaaS products — but it creates a serious SEO problem when implemented without server-side or dynamic rendering support.</p>
+      <p>When Googlebot visits a client-side rendered page, it receives an almost empty HTML shell. The actual content — headings, paragraphs, meta tags, links — is injected by JavaScript after the page loads. Googlebot does have the ability to render JavaScript, but it does so in a second wave, often days or weeks after the initial crawl, using a headless Chromium instance. For a site with low domain authority and no established crawl frequency, this two-wave rendering delay meant Google rarely got to see the actual content at all.</p>
+      <p>I confirmed this in the first hour of the audit using the GSC URL Inspection tool, which showed a "Crawled - currently not indexed" status for every URL tested. The rendered HTML snapshot shown in the tool was the empty shell — just a <code>&lt;div id="root"&gt;&lt;/div&gt;</code> with no content inside.</p>
+    </section>
+
+    <section class="cs-section">
+      <h2>Audit Scope</h2>
+      <p>Given the scale of the indexing problem, I focused the audit in three layers:</p>
+
+      <h3>Layer 1 — Rendering & Indexability</h3>
+      <p>Full rendering audit using a combination of GSC URL Inspection, manual <code>curl</code> requests to compare raw server HTML against browser-rendered HTML, and Screaming Frog's JavaScript rendering mode. I also used Cloudflare Workers to intercept bot user-agent requests and log what the server was returning to Googlebot specifically.</p>
+
+      <h3>Layer 2 — Architecture & Internal Linking</h3>
+      <p>Sitebulb crawl of all 94 planned site pages (as listed in the XML sitemap) to map internal link structure, anchor text distribution, and crawl depth from the homepage. I also cross-referenced the sitemap submission history in GSC to understand which URLs had been discovered vs. processed vs. indexed over time.</p>
+
+      <h3>Layer 3 — Core Web Vitals</h3>
+      <p>WebPageTest runs on the five highest-priority pages in both mobile and desktop configurations, with CrUX field data pulled for any URLs with sufficient traffic. LCP, CLS, and INP measured and traced to specific causal elements.</p>
+    </section>
+
+    <section class="cs-section">
+      <h2>Key Findings</h2>
+
+      <div class="cs-finding">
+        <div class="cs-finding__num">01</div>
+        <div>
+          <h3>Client-Side Rendering With No Fallback</h3>
+          <p>Every page on the site returned an empty HTML shell to any client — including Googlebot — that did not execute JavaScript. No server-side rendering (SSR), no static generation (SSG), and no dynamic rendering in place. The entire content layer of the site existed only in the JavaScript bundle. Googlebot's first-wave crawl, which reads only raw HTML, saw nothing indexable on any page.</p>
+        </div>
+      </div>
+
+      <div class="cs-finding">
+        <div class="cs-finding__num">02</div>
+        <div>
+          <h3>Meta Tags Rendered Client-Side</h3>
+          <p>Title tags, meta descriptions, and Open Graph tags were all being injected by a React Helmet implementation — meaning they were also absent from the raw HTML. Even on the occasions where Googlebot did execute the JavaScript in its second wave, it was encountering meta tags with generic fallback values because the dynamic meta tag injection was dependent on API calls that took over 4 seconds to resolve.</p>
+        </div>
+      </div>
+
+      <div class="cs-finding">
+        <div class="cs-finding__num">03</div>
+        <div>
+          <h3>Navigation Links Not Crawlable</h3>
+          <p>The site's main navigation used React Router with client-side link handling. The actual <code>&lt;a href&gt;</code> attributes were being overwritten by JavaScript event handlers, meaning the raw HTML contained no standard hyperlinks for Googlebot to follow. Each page was effectively an island — even if Google had indexed the homepage, it had no way to discover any other URL through standard link crawling.</p>
+        </div>
+      </div>
+
+      <div class="cs-finding">
+        <div class="cs-finding__num">04</div>
+        <div>
+          <h3>LCP of 3.2 Seconds (Mobile)</h3>
+          <p>The largest contentful paint on mobile was a hero image loaded as a high-resolution PNG without preloading, combined with the JavaScript bundle (1.4MB uncompressed) blocking the render thread. Even after fixing the indexing issue, poor CWV would suppress rankings for competitive queries.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cs-section">
+      <h2>The Fix Plan</h2>
+      <p>I delivered a technical audit report to the client's CTO and marketing manager, followed by a 2-hour implementation workshop. Given the engineering effort required, I prioritised fixes into two tiers:</p>
+
+      <h3>Tier 1 — Quick Wins (No Framework Changes Required)</h3>
+      <ol class="cs-list">
+        <li><strong>Dynamic rendering via Prerender.io:</strong> Deployed a rendering proxy that detects bot user agents and serves pre-rendered HTML snapshots instead of the JavaScript shell. This was a one-day engineering task and immediately made all 94 pages readable to Googlebot without touching the React codebase</li>
+        <li><strong>Static meta tags in &lt;head&gt;:</strong> Critical meta tags (title, description, canonical) hardcoded into the server-side HTML template as fallbacks, ensuring they were present even before JavaScript execution</li>
+        <li><strong>Href attributes on navigation links:</strong> React Router links updated to include proper <code>href</code> attributes alongside the JS event handlers, enabling Googlebot to crawl links via standard anchor discovery</li>
+      </ol>
+
+      <h3>Tier 2 — Structural Improvements (Phased Over 6 Weeks)</h3>
+      <ol class="cs-list">
+        <li><strong>Image optimisation:</strong> Hero and feature images converted to AVIF with <code>&lt;link rel="preload"&gt;</code> in the document head — LCP dropped from 3.2s to 0.8s</li>
+        <li><strong>Bundle splitting:</strong> JavaScript bundle split into route-based chunks using dynamic imports, reducing initial JS payload from 1.4MB to 280KB</li>
+        <li><strong>Internal linking infrastructure:</strong> A structured blog → feature page linking system built into the CMS template, ensuring every blog post links to at least two relevant product feature pages</li>
+        <li><strong>XML sitemap refresh:</strong> Sitemap regenerated and resubmitted to GSC after all fixes went live, triggering a fresh crawl cycle</li>
+      </ol>
+    </section>
+
+    <section class="cs-section">
+      <h2>Results — 90 Days Post-Implementation</h2>
+      <table class="cs-table">
+        <thead>
+          <tr><th>Metric</th><th>Before</th><th>After (90 days)</th><th>Change</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Pages Indexed (GSC)</td><td>0</td><td>94</td><td class="positive">All pages indexed</td></tr>
+          <tr><td>GSC Impressions (monthly)</td><td>~800</td><td>~4,100</td><td class="positive">+413%</td></tr>
+          <tr><td>GSC Clicks (monthly)</td><td>12</td><td>190</td><td class="positive">+1,483%</td></tr>
+          <tr><td>LCP — Mobile</td><td>3.2s</td><td>0.8s</td><td class="positive">-75%</td></tr>
+          <tr><td>JS Bundle Size</td><td>1.4MB</td><td>280KB</td><td class="positive">-80%</td></tr>
+          <tr><td>Keyword Rankings (any position)</td><td>3</td><td>67</td><td class="positive">+2,133%</td></tr>
+        </tbody>
+      </table>
+      <p>The Prerender.io dynamic rendering fix went live on a Thursday. By the following Monday, GSC was reporting new URL discovery activity and the first batch of pages were appearing in the index. Full indexation of all 94 pages took approximately three weeks — faster than anticipated, likely because the sitemap resubmission triggered a prioritised crawl.</p>
+    </section>
+
+    <section class="cs-section">
+      <h2>What I Learned</h2>
+      <p>JavaScript-rendered sites are one of the most common and most invisible SEO problems in the SaaS and tech startup world. Every engineer building with React, Vue, or Angular knows what they're doing — but very few think about what the site looks like to a bot that may never execute that JavaScript at all.</p>
+      <p>The fastest fix here was not rewriting the application in Next.js (though that would be the ideal long-term solution). It was getting a rendering proxy in front of bots within 48 hours of the audit landing, so Google could start indexing while the engineering team tackled the deeper structural work at a pace that didn't disrupt their product roadmap. Speed of partial implementation beats perfection that takes months.</p>
+    </section>
+
+    <div class="cs-cta">
+      <h3>Is Your SaaS Site Indexed?</h3>
+      <p>If your site is built on a JavaScript framework and you're not sure what Googlebot actually sees — a rendering audit takes less than a day and answers the question definitively.</p>
+      <a href="../index.html#contact" class="btn btn--lg">Book a Technical Audit</a>
+      <a href="mailto:kapoorpragya10@gmail.com" class="btn btn--outline btn--lg">Email Pragya Directly</a>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer__left">© 2025 Pragya Kapoor · SEO Audit Specialist</div>
+    <div class="footer__links">
+      <a href="mailto:kapoorpragya10@gmail.com">kapoorpragya10@gmail.com</a>
+      <a href="../index.html#work">← All Case Studies</a>
+    </div>
+  </footer>
+  <script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,261 @@
+/* ============================================
+   CASE STUDY SHARED STYLES
+   ============================================ */
+
+.case-hero {
+  margin-top: 64px;
+  padding: 5rem 2.5rem 3.5rem;
+  border-bottom: 2px solid var(--ink);
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.case-hero__back {
+  display: inline-block;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #888;
+  margin-bottom: 2rem;
+  transition: color 0.15s;
+}
+.case-hero__back:hover { color: var(--accent); }
+
+.case-hero__meta {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.case-hero h1 {
+  font-family: var(--display);
+  font-size: clamp(3.5rem, 8vw, 7rem);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 0.93;
+  margin-bottom: 1.5rem;
+}
+
+.case-hero__sub {
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: #aaa;
+  max-width: 660px;
+  margin-bottom: 3rem;
+}
+
+.case-hero__stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  border-top: 1px solid #333;
+}
+
+.case-hero__stat {
+  padding: 1.25rem 2rem;
+  border-right: 1px solid #333;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #888;
+}
+
+.case-hero__stat span {
+  display: block;
+  font-family: var(--display);
+  font-size: 2rem;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 0.3rem;
+}
+
+/* ---- BODY ---- */
+.case-body {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 5rem 2.5rem 6rem;
+}
+
+.cs-section {
+  margin-bottom: 3.5rem;
+}
+
+.cs-section h2 {
+  font-family: var(--serif);
+  font-size: 2rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.cs-section h3 {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  margin: 1.75rem 0 0.6rem;
+}
+
+.cs-section p {
+  font-size: 0.88rem;
+  line-height: 1.85;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+.cs-section code {
+  font-family: var(--mono);
+  font-size: 0.82em;
+  background: #f0ebe0;
+  padding: 0.1em 0.35em;
+  border-radius: 2px;
+}
+
+.cs-callout {
+  border-left: 4px solid var(--accent);
+  padding: 1.5rem 2rem;
+  background: #fff;
+  margin: 2.5rem 0;
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  font-style: italic;
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+.cs-finding {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1.75rem 0;
+  border-bottom: 1px solid var(--border);
+  align-items: flex-start;
+}
+
+.cs-finding:first-of-type { border-top: 1px solid var(--border); }
+
+.cs-finding__num {
+  font-family: var(--display);
+  font-size: 2.5rem;
+  color: var(--accent);
+  line-height: 1;
+  flex-shrink: 0;
+  width: 3rem;
+}
+
+.cs-finding h3 {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  margin-top: 0.3rem;
+}
+
+.cs-finding p {
+  font-size: 0.85rem;
+  line-height: 1.8;
+  color: var(--muted);
+  margin-bottom: 0;
+}
+
+.cs-list {
+  list-style: none;
+  margin: 1rem 0 1.5rem;
+}
+
+.cs-list li {
+  font-size: 0.85rem;
+  line-height: 1.75;
+  color: var(--muted);
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border);
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.cs-list li::before {
+  content: counter(list-counter) '.';
+  counter-increment: list-counter;
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.cs-list { counter-reset: list-counter; }
+
+.cs-list li strong { color: var(--ink); }
+
+.cs-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0 2rem;
+  font-size: 0.82rem;
+}
+
+.cs-table th,
+.cs-table td {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.cs-table th {
+  font-weight: 500;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  background: #f8f4ec;
+}
+
+.cs-table td.positive {
+  color: #1a8a3c;
+  font-family: var(--display);
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+}
+
+.cs-cta {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 3rem;
+  margin-top: 4rem;
+  text-align: center;
+}
+
+.cs-cta h3 {
+  font-family: var(--display);
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.75rem;
+}
+
+.cs-cta p {
+  font-size: 0.85rem;
+  color: #888;
+  margin-bottom: 2rem;
+  line-height: 1.7;
+}
+
+.cs-cta .btn {
+  margin: 0 0.4rem 0.75rem;
+}
+
+.cs-cta .btn--outline {
+  border-color: #555;
+  color: #aaa;
+}
+.cs-cta .btn--outline:hover {
+  border-color: var(--paper);
+  color: var(--paper);
+  background: transparent;
+}
+
+@media (max-width: 768px) {
+  .case-hero { padding: 3rem 1.25rem 2.5rem; }
+  .case-hero__stat { padding: 1rem 1.25rem; }
+  .case-body { padding: 3rem 1.25rem 4rem; }
+  .cs-finding { flex-direction: column; gap: 0.5rem; }
+  .cs-finding__num { font-size: 1.8rem; width: auto; }
+  .cs-cta { padding: 2rem 1.25rem; }
+}
